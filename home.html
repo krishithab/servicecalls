@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Snap 2 Resolve</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .service-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: #1976D2;
+      margin-bottom: 1rem;
+    }
+    .emergency-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="home.html">
+        <img src="https://i.postimg.cc/9QdRFNgS/logo-tracker-removebg-preview.png" alt="Logo" class="navbar-logo me-2" style="height:30px;">
+        Snap 2 Resolve
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="home.html"><i class="fas fa-home me-1"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="upload.html"><i class="fas fa-upload me-1"></i> Report Issue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html"><i class="fas fa-user me-1"></i> Profile</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section pt-5">
+    <div class="container text-center py-5 mt-3">
+      <h1 class="display-4 fw-bold mb-3">Report Local Issues. Get Results.</h1>
+      <p class="lead text-muted mb-4">Upload photos of community problems and track their resolution in real-time.</p>
+      <a href="upload.html" class="btn btn-primary btn-lg px-4">
+        <i class="fas fa-plus-circle me-2"></i> Report an Issue
+      </a>
+    </div>
+  </section>
+
+  <!-- Live Issues Map -->
+  <section class="map-section py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Live Community Issues</h2>
+      <div class="card shadow-sm">
+        <div class="card-body p-0">
+          <div id="liveMap" class="map-container"></div>
+        </div>
+      </div>
+      <div class="legend mt-3 text-center">
+        <span class="badge bg-warning me-2"><i class="fas fa-clock me-1"></i> Pending</span>
+        <span class="badge bg-primary me-2"><i class="fas fa-tools me-1"></i> In Progress</span>
+        <span class="badge bg-success"><i class="fas fa-check-circle me-1"></i> Resolved</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section (Replacing Recent Reports) -->
+  <section class="services-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Available Services</h2>
+      <div class="row g-4">
+        <!-- Medical Service -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm service-card">
+            <div class="card-img-top ratio ratio-16x9 bg-light d-flex align-items-center justify-content-center">
+              <i class="fas fa-ambulance service-icon"></i>
+            </div>
+            <div class="card-body position-relative">
+              <span class="badge bg-danger emergency-badge">Emergency: 108</span>
+              <h5 class="card-title">Medical Services</h5>
+              <p class="card-text text-muted">
+                24/7 ambulance services with average 8-minute response time
+              </p>
+              <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Police Service -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm service-card">
+            <div class="card-img-top ratio ratio-16x9 bg-light d-flex align-items-center justify-content-center">
+              <i class="fas fa-shield-alt service-icon"></i>
+            </div>
+            <div class="card-body position-relative">
+              <span class="badge bg-danger emergency-badge">Emergency: 100</span>
+              <h5 class="card-title">Police Services</h5>
+              <p class="card-text text-muted">
+                Immediate response to emergencies and community policing
+              </p>
+              <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fire Service -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm service-card">
+            <div class="card-img-top ratio ratio-16x9 bg-light d-flex align-items-center justify-content-center">
+              <i class="fas fa-fire-extinguisher service-icon"></i>
+            </div>
+            <div class="card-body position-relative">
+              <span class="badge bg-danger emergency-badge">Emergency: 101</span>
+              <h5 class="card-title">Fire Department</h5>
+              <p class="card-text text-muted">
+                Fire emergency response and rescue operations
+              </p>
+              <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Traffic Police -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm service-card">
+            <div class="card-img-top ratio ratio-16x9 bg-light d-flex align-items-center justify-content-center">
+              <i class="fas fa-traffic-light service-icon"></i>
+            </div>
+            <div class="card-body position-relative">
+              <span class="badge bg-warning emergency-badge">Helpline: 1073</span>
+              <h5 class="card-title">Traffic Police</h5>
+              <p class="card-text text-muted">
+                Traffic management and road safety services
+              </p>
+              <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Municipal -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm service-card">
+            <div class="card-img-top ratio ratio-16x9 bg-light d-flex align-items-center justify-content-center">
+              <i class="fas fa-trash-alt service-icon"></i>
+            </div>
+            <div class="card-body position-relative">
+              <span class="badge bg-primary emergency-badge">Helpline</span>
+              <h5 class="card-title">Municipal Services</h5>
+              <p class="card-text text-muted">
+                Garbage collection, road maintenance, and public cleanliness
+              </p>
+              <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anti-Corruption -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm service-card">
+            <div class="card-img-top ratio ratio-16x9 bg-light d-flex align-items-center justify-content-center">
+              <i class="fas fa-gavel service-icon"></i>
+            </div>
+            <div class="card-body position-relative">
+              <span class="badge bg-dark emergency-badge">Helpline: 1064</span>
+              <h5 class="card-title">Anti-Corruption</h5>
+              <p class="card-text text-muted">
+                Report corruption and misuse of public resources
+              </p>
+              <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">How It Works</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 text-center bg-transparent">
+            <div class="card-body">
+              <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; margin: 0 auto 1rem;">
+                <i class="fas fa-camera fa-2x"></i>
+              </div>
+              <h5>1. Snap the Issue</h5>
+              <p class="text-muted">Take a photo of the problem you want to report</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 text-center bg-transparent">
+            <div class="card-body">
+              <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; margin: 0 auto 1rem;">
+                <i class="fas fa-upload fa-2x"></i>
+              </div>
+              <h5>2. Upload Details</h5>
+              <p class="text-muted">Fill out the simple form with location and description</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 text-center bg-transparent">
+            <div class="card-body">
+              <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; margin: 0 auto 1rem;">
+                <i class="fas fa-check-circle fa-2x"></i>
+              </div>
+              <h5>3. Track Resolution</h5>
+              <p class="text-muted">Get updates and notifications until your issue is resolved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/map.js"></script>
+</body>
+</html>

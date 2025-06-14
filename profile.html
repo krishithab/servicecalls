@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Snap 2 Resolve</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .profile-header {
+      background: linear-gradient(135deg, #1976D2, #0D47A1);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+    }
+    
+    .avatar-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid white;
+      overflow: hidden;
+      margin: -75px auto 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .edit-avatar {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.7);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .editable-field {
+      position: relative;
+    }
+    
+    .edit-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .editable-field:hover .edit-icon {
+      opacity: 1;
+    }
+    
+    .view-mode {
+      padding: 8px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+    
+    .edit-mode {
+      display: none;
+    }
+    
+    .editing .view-mode {
+      display: none;
+    }
+    
+    .editing .edit-mode {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="home.html">
+        <img src="https://i.postimg.cc/9QdRFNgS/logo-tracker-removebg-preview.png" alt="Logo" class="navbar-logo me-2" style="height:30px;">
+        Snap 2 Resolve
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html"><i class="fas fa-home me-1"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="upload.html"><i class="fas fa-upload me-1"></i> Report Issue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profile.html"><i class="fas fa-user me-1"></i> Profile</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Header -->
+  <div class="profile-header text-center">
+    <div class="container">
+      <h1 class="display-5 fw-bold">User Profile</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Avatar and Basic Info -->
+    <div class="row mb-5">
+      <div class="col-md-4 text-center mx-auto">
+        <div class="avatar-container">
+          <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Profile Picture" class="avatar" id="profileAvatar">
+          <div class="edit-avatar" data-bs-toggle="modal" data-bs-target="#avatarModal">
+            <i class="fas fa-camera text-white"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-8 mx-auto">
+        <!-- User Details -->
+        <div class="card mt-3">
+          <div class="card-body text-center">
+            <div class="editable-field mb-4">
+              <div class="view-mode">
+                <h3><i class="fas fa-envelope me-2 text-primary"></i> 
+                  <span id="emailView">sarah.johnson@example.com</span>
+                  <i class="fas fa-pencil edit-icon text-muted"></i>
+                </h3>
+              </div>
+              <div class="edit-mode">
+                <div class="mb-3">
+                  <label for="emailEdit" class="form-label">Email Address</label>
+                  <input type="email" class="form-control text-center" id="emailEdit" value="sarah.johnson@example.com">
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-success me-2" id="saveEmail">
+                    <i class="fas fa-save me-1"></i> Save
+                  </button>
+                  <button class="btn btn-outline-secondary" id="cancelEmail">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+              <button class="btn btn-outline-primary" onclick="window.location.href='home.html'">
+                <i class="fas fa-home me-1"></i> Back to Home
+              </button>
+              <button class="btn btn-outline-danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Avatar Modal -->
+  <div class="modal fade" id="avatarModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Profile Picture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="mb-4">
+            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Current Profile" class="img-thumbnail rounded-circle" id="modalAvatar" style="width: 150px; height: 150px;">
+          </div>
+          
+          <div class="mb-3">
+            <label for="avatarUpload" class="form-label">Upload new photo</label>
+            <input class="form-control" type="file" id="avatarUpload" accept="image/*">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveAvatar">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Avatar Upload and Edit
+      const avatarUpload = document.getElementById('avatarUpload');
+      const profileAvatar = document.getElementById('profileAvatar');
+      const modalAvatar = document.getElementById('modalAvatar');
+      const saveAvatarBtn = document.getElementById('saveAvatar');
+      
+      let newAvatar = null;
+      
+      avatarUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            newAvatar = event.target.result;
+            modalAvatar.src = newAvatar;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+      
+      saveAvatarBtn.addEventListener('click', function() {
+        if (newAvatar) {
+          profileAvatar.src = newAvatar;
+          alert('Profile picture updated successfully!');
+          const modal = bootstrap.Modal.getInstance(document.getElementById('avatarModal'));
+          modal.hide();
+        } else {
+          alert('Please select a new profile picture first.');
+        }
+      });
+      
+      // Email Edit Functionality
+      const emailField = document.querySelector('.editable-field');
+      const emailView = document.getElementById('emailView');
+      const emailEdit = document.getElementById('emailEdit');
+      const saveEmailBtn = document.getElementById('saveEmail');
+      const cancelEmailBtn = document.getElementById('cancelEmail');
+      const editIcon = document.querySelector('.edit-icon');
+      
+      editIcon.addEventListener('click', function() {
+        emailField.classList.add('editing');
+        emailEdit.focus();
+      });
+      
+      saveEmailBtn.addEventListener('click', function() {
+        const newEmail = emailEdit.value.trim();
+        if (newEmail.includes('@') && newEmail.includes('.')) {
+          emailView.textContent = newEmail;
+          emailField.classList.remove('editing');
+          alert('Email updated successfully!');
+        } else {
+          alert('Please enter a valid email address');
+        }
+      });
+      
+      cancelEmailBtn.addEventListener('click', function() {
+        emailEdit.value = emailView.textContent;
+        emailField.classList.remove('editing');
+      });
+      
+      // Logout Button - Redirects to index.html
+      document.getElementById('logoutBtn').addEventListener('click', function() {
+        if (confirm('Are you sure you want to logout?')) {
+          // Redirect to index page after confirmation
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

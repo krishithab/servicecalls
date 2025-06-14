@@ -1,0 +1,165 @@
+/* Shared Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Auth Page */
+.auth-page {
+  background: linear-gradient(135deg, #1976D2, #0D47A1);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+/* Splash Screen */
+.splash-screen {
+  background: #1976D2;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.splash-logo {
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+/* Upload Dropzone */
+.dropzone {
+  border: 2px dashed #ccc;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.dropzone:hover {
+  border-color: #1976D2;
+}
+
+/* Map Containers */
+#liveMap, #locationMap {
+  height: 500px;
+  width: 100%;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+/* Custom Markers */
+.leaflet-marker-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1976D2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+.leaflet-marker-icon.selected {
+  width: 32px;
+  height: 32px;
+  background: #1976D2;
+}
+
+/* Marker Status Colors */
+.leaflet-marker-icon.pending { background: #FFC107; }
+.leaflet-marker-icon.in-progress { background: #1976D2; }
+.leaflet-marker-icon.resolved { background: #28A745; }
+.leaflet-marker-icon.rejected { background: #DC3545; }
+
+/* Popup Styling */
+.leaflet-popup-content {
+  min-width: 200px;
+}
+
+/* Location Picker Button */
+#getLocationBtn {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #1976D2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+/* Map Containers */
+#liveMap, #locationMap {
+  width: 100%;
+  background: #f8f9fa;
+}
+
+/* Homepage Map */
+#liveMap {
+  height: 60vh; /* 60% of viewport height */
+  min-height: 400px;
+}
+
+/* Upload Page Map */
+#locationMap {
+  height: 400px;
+  border: 2px dashed #dee2e6;
+  transition: border-color 0.3s;
+}
+
+#locationMap:hover {
+  border-color: #1976D2;
+}
+
+/* Legend Styling */
+.legend .badge {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+/* Auth Page Tweaks */
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.nav-tabs {
+  border-bottom: none;
+  justify-content: center;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  color: #6c757d;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+}
+
+.nav-tabs .nav-link.active {
+  color: #0d6efd;
+  border-bottom: 3px solid #0d6efd;
+  background: transparent;
+}
+
+.btn-primary, .btn-success {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  #liveMap {
+    height: 50vh;
+  }
+  #locationMap {
+    height: 300px;
+  }
+}
